@@ -22,5 +22,35 @@ struct node {
 };
 
 void sll_012_sort(struct node *head){
-	
+	struct node *new_node, *temp;
+	int ones = 0, zeros = 0, twos = 0;
+	new_node = head;
+	while (new_node != NULL){
+		if (new_node->data == 0){
+			zeros++;
+		}
+		else if (new_node->data == 1){
+			ones++;
+		}
+		else if (new_node->data == 2){
+			twos++;
+		}
+		new_node = new_node->next;
+	}
+	temp = head;
+	while (zeros > 0){
+		temp->data = 0;
+		temp = temp->next;
+		zeros--;
+	}
+	while (ones > 0){
+		temp->data = 1;
+		temp = temp->next;
+		ones--;
+	}
+	while (twos > 0){
+		temp->data = 2;
+		temp = temp->next;
+		twos--;
+	}
 }
