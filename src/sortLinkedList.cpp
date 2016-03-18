@@ -22,14 +22,7 @@ struct node *merge(struct node *, struct node *);
 void mergesort(struct node **);
 void  partion(struct node *, struct node **, struct node **);
 
-struct node * sortLinkedList(struct node *head) {
-	if (head != NULL)
-	{
-		mergesort(&head);
-		return head;
-	}
-	return NULL;
-}
+
 void mergesort(struct node **head1)
 {
 	struct node *header = *head1;
@@ -44,6 +37,8 @@ void mergesort(struct node **head1)
 	mergesort(&b);
 	*head1 = merge(a, b);
 }
+
+
 struct node *merge(struct node *a, struct node *b)
 {
 	struct node *temp = NULL;
@@ -65,6 +60,8 @@ struct node *merge(struct node *a, struct node *b)
 	}
 	return(temp);
 }
+
+
 void  partion(struct node *src, struct node **first, struct node **last)
 {
 	struct node *fast;
@@ -93,5 +90,13 @@ void  partion(struct node *src, struct node **first, struct node **last)
 		*last = slow->next;
 		slow->next = NULL;
 	}
+}
 
+struct node * sortLinkedList(struct node *head) {
+	if (head != NULL)
+	{
+		mergesort(&head);
+		return head;
+	}
+	return NULL;
 }
